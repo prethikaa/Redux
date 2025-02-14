@@ -1,14 +1,10 @@
 import React, { use } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { editMovie } from "../movieSlice";
 export const MovieList = () => {
   const movies = useSelector((state) => state.movies.movies);
   const dispatch = useDispatch();
   const handleRemove = (id) => {
     dispatch(removeMovie(id));
-  };
-  const handleEdit = (id) => {
-    dispatch(editMovie(id));
   };
 
   return (
