@@ -12,8 +12,10 @@ export const MovieInput = () => {
   };
   return (
     <>
-      <div>Movie Input</div>
-      <input onChange={(e) => setNewMovie(e.target.value)} />
+      <input
+        placeholder="Enter any movie here"
+        onChange={(e) => setNewMovie(e.target.value)}
+      />
       <button onClick={handleMovie}>Add Movie</button>
     </>
   );

@@ -1,14 +1,29 @@
 import React, { use } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { editMovie } from "../movieSlice";
 export const MovieList = () => {
   const movies = useSelector((state) => state.movies.movies);
-  console.log(movies);
+  const dispatch = useDispatch();
+  const handleRemove = (id) => {
+    dispatch(removeMovie(id));
+  };
+  const handleEdit = (id) => {
+    dispatch(editMovie(id));
+  };
+
   return (
     <>
-      <div>Movie List</div>
-      {movies.map((movie) => (
-        <div key={movie.id}>{movie.name}</div>
-      ))}
+      <div>
+        <h1>My Movies List</h1>
+        {movies.map((movie) => (
+          <>
+            <li key={movie.id}>
+              {movie.name}
+              <button onClick={() => handleRemove(movie.id)}>Remove</button>
+            </li>
+          </>
+        ))}
+      </div>
     </>
   );
 };
